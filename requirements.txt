@@ -1,0 +1,12 @@
+# FX RL diploma project — pinned to the versions used during development.
+# CPU-only torch wheel; adjust if a CUDA build is desired.
+numpy==2.4.6
+pandas==3.0.3
+matplotlib==3.10.9
+torch==2.12.0
+torch_geometric==2.8.0
+gymnasium==1.2.3
+stable-baselines3==2.8.0
+PyYAML>=6.0
+tensorboard>=2.16
+pytest>=8.0

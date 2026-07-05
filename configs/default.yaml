@@ -1,0 +1,89 @@
+data:
+  currencies:
+  - USD
+  - EUR
+  - GBP
+  - JPY
+  quoted_pairs:
+  - EURUSD
+  - GBPUSD
+  - USDJPY
+  - EURGBP
+  - EURJPY
+  - GBPJPY
+  n_ticks: 5000
+  seed: 42
+  base:
+    EURUSD: 1.085
+    GBPUSD: 1.272
+    USDJPY: 149.8
+    EURGBP: 0.8527
+    EURJPY: 162.5
+    GBPJPY: 190.6
+  vols:
+    EURUSD: 0.0002
+    GBPUSD: 0.00025
+    USDJPY: 0.0003
+    EURGBP: 0.00015
+    EURJPY: 0.00035
+    GBPJPY: 0.0004
+  spreads:
+    EURUSD: 3.0e-05
+    GBPUSD: 4.0e-05
+    USDJPY: 0.004
+    EURGBP: 3.0e-05
+    EURJPY: 0.006
+    GBPJPY: 0.008
+  drifts:
+    EURUSD: 2.0e-06
+    GBPUSD: 3.0e-06
+    USDJPY: -5.0e-06
+    EURGBP: -1.0e-06
+    EURJPY: 3.0e-06
+    GBPJPY: 4.0e-06
+  use_regimes: true
+  regime_switch_prob: 0.005
+  trend_strength: 4.0e-05
+  arb_injection_prob: 0.01
+  arb_mag_min: 0.0005
+  arb_magnitude: 0.0025
+  arb_dur_min: 3
+  arb_duration: 10
+  arb_decay: true
+  arb_multileg_prob: 0.3
+env:
+  window_size: 20
+  initial_balance_usd: 10000.0
+  max_drawdown: 0.5
+  drawdown_penalty: 1.0
+  turnover_penalty: 0.005
+  reward_scale: 100.0
+  action_temperature: 3.0
+model:
+  features_dim: 128
+  gat_hidden: 16
+  gat_heads: 4
+  gat_out: 32
+  net_arch:
+  - 128
+  - 64
+  learning_rate: 0.0001
+  batch_size: 256
+  buffer_size: 100000
+  learning_starts: 2000
+  train_freq: 1
+  gradient_steps: 1
+  action_noise_sigma: 0.15
+  gamma: 0.99
+train:
+  total_timesteps: 100000
+  seed: 0
+  log_every: 500
+  eval_seed: 1
+  train_frac: 0.8
+  model_dir: results/models
+  log_dir: results/logs
+  plot_dir: results/plots
+  metrics_dir: results/metrics
+  model_name: td3_fx_graph
+_data_fingerprint: 4e22619d2f99

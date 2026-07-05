@@ -1,0 +1,47 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Virtual environment ---
+.venv/
+
+# --- Run outputs (keep the directory layout via .gitkeep) ---
+results/models/*
+results/logs/*
+results/plots/*
+results/metrics/*
+!results/**/.gitkeep
+
+# --- Editors / OS / vault tools ---
+.vscode/
+.obsidian/
+.DS_Store
+*.canvas
+
+# --- Archives and binaries ---
+*.zip
+*.exe
+
+# --- LaTeX build artifacts (keep main.tex, references.bib, main.pdf) ---
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+paper/pass.txt
+paper/bibtex.txt
+
+# --- Generated PDF page previews ---
+_preview/
+
+# --- Internal AI planning notes (delete this line to include them) ---
+ai-memory/

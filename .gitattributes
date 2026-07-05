@@ -1,0 +1,9 @@
+# Normalise line endings across platforms
+* text=auto
+
+# Treat these as binary (no line-ending/merge munging)
+*.png binary
+*.pdf binary
+*.zip binary
+*.exe binary
+*.ipynb binary

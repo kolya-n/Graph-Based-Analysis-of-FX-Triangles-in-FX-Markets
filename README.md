@@ -102,23 +102,3 @@ arbitrage therefore exists in the data — which is what gives the `arb_signal` 
 feature something real to represent. The signal is **spread-aware**: it is the
 return of an *executable* bid/ask conversion loop, so it correctly discounts the
 theoretical mid-price edge.
-
-## Changes vs. the original notebook
-
-1. **Action semantics unified.** The sketch's docstring described a delta action
-   in `[-1, 1]`, but the code used a 3-dim `Box(0, 1)` interpreted as a target
-   weight capped at 30% — three contradictory definitions. Now: a single 4-dim
-   target-weight action mapped to a valid long-only simplex via softmax.
-2. **Previous allocation is in the observation.** `prev_weights` was tracked but
-   never exposed; it is now a node feature, so the agent can reason about turnover.
-3. **Return-based reward.** Raw dollar ΔNAV (O(10)) used to dwarf the penalties
-   and a large `HOLD_BONUS` invited a do-nothing policy. Reward is now scaled log
-   return minus a small turnover penalty, with spread cost charged once via bid/ask
-   execution (not double-counted).
-4. **Spread-aware arbitrage**, computed by explicit executable conversion rather
-   than an implicit bid-only product.
-5. **Methodology:** independent train/test seeds (+ optional regime shift),
-   baselines, and full financial metrics — replacing three identical deterministic
-   rollouts on the same path.
-6. **Engineering:** one config object, full seeding, tests (`check_env` + unit
-   tests), TensorBoard logging, checkpointing, and a package layout.
